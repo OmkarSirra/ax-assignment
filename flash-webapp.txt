@@ -1,0 +1,12 @@
+Steps to achieve flask web app Deployment using Fargate Launchtype using Terraform
+1. Create ECS Cluster using Launch type , Fargate.
+2. Create ECS Service in the above cluster.
+3. Add scale up and down policies to above ECS Service.
+4. Create ALB , attach Target group to it with Ngnix port. 
+5. Create ALB path based rules to route app based context path to Target group , which is pointed to ngnix container host port.
+6. Ngnix container internally routes to flask web app container. 
+
+
+How this works:
+1. You dont have to explicitly add targets in target group of ALB.
+2. AWS ECS service takes care of adding targets dynamically to the Target group based on desired count or Autoscaling policies setup. 
